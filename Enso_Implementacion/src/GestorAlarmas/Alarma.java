@@ -6,24 +6,22 @@ public class Alarma implements InterfazAlarma{
 	
 	private final Integer idAlarma;
 	private final Date fechaInicio;
-	private String tipo;
+	private final String tipo;
 	private final String centro;
+	private String estado;
 	private Date fechaCierre;
 
-	public Alarma(Integer idAlarma, Date fechaInicio, String tipo, String centro, String estado, String fechaCierre){
+	public Alarma(Integer idAlarma, Date fechaInicio, String tipo, String centro, String estado){
 		this.idAlarma = idAlarma;
 		this.fechaInicio = fechaInicio;
 		this.tipo = tipo;
 		this.centro = centro;
+		this.estado = estado;
 		this.fechaCierre = null;
 	}
 
 	public String getTipo() {
 		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 
 	public Date getFechaCierre() {
@@ -45,17 +43,34 @@ public class Alarma implements InterfazAlarma{
 	public String getCentro() {
 		return centro;
 	}
+	
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
+	public String getEstado() {
+		return this.estado;
+	}
+	
 
 	@Override
 	public Boolean modificarAlarma(String estado) {
-		this.estado = estado;
-		return null;
+		try {
+			this.setEstado(estado);
+		}catch(Exception e) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
 	public Boolean cerrarAlarma() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			this.setFechaCierre(new Date(System.currentTimeMillis()));
+		}catch(Exception e) {
+			return false;
+		}
+		return true;
 	}
 	
 }
