@@ -1,29 +1,33 @@
 package GestorUsuarios;
 
+import GestorAlarmas.InterfazGestorAlarmas;
+import GestorEstadisticas.InterfazGestorEstadisticas;
+
 public class Administrador {
-	private InterfazGestorEstadisticas IGEstadisticas;
-	private InterfazGestorAlarmas IGAlarmas;
+	private static InterfazGestorEstadisticas IGEstadisticas;
+	private static InterfazGestorAlarmas IGAlarmas;
 	
-	public Administrador(InterfazGestorAlarmas IGAlarmas, InterfazGestorEstadisticas IGEstadisticas) {
-		this.IGAlarmas = IGAlarmas;
-		this.IGEstadisticas = IGEstadisticas;
+	public Administrador(InterfazGestorAlarmas alarmas, InterfazGestorEstadisticas estadisticas) {
+		IGAlarmas = alarmas;
+		IGEstadisticas = estadisticas;
 	}
 
-	public InterfazGestorEstadisticas getIGEstadisticas() {
+	public static InterfazGestorEstadisticas getIGEstadisticas() {
 		return IGEstadisticas;
 	}
 
-	public void setIGEstadisticas(InterfazGestorEstadisticas iGEstadisticas) {
+	public static void setIGEstadisticas(InterfazGestorEstadisticas iGEstadisticas) {
 		IGEstadisticas = iGEstadisticas;
 	}
 
-	public InterfazGestorAlarmas getIGAlarmas() {
+	public static InterfazGestorAlarmas getIGAlarmas() {
 		return IGAlarmas;
 	}
 
-	public void setIGAlarmas(InterfazGestorAlarmas iGAlarmas) {
+	public static void setIGAlarmas(InterfazGestorAlarmas iGAlarmas) {
 		IGAlarmas = iGAlarmas;
 	}
+
 	
 	
 	

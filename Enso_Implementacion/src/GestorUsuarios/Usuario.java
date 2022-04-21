@@ -11,7 +11,7 @@ public class Usuario implements InterfazUsuario{
 	private String zona;
 	private String capacitacion;
 	private String estado;
-	private InterfazGestorUsuarios IGUsuarios;
+	private static InterfazGestorUsuarios IGUsuarios;
 	
 		
 	public Usuario(String dni, String nombre, String telefono, String email, String centro, String zona,
@@ -81,12 +81,15 @@ public class Usuario implements InterfazUsuario{
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public InterfazGestorUsuarios getIGUsuarios() {
+
+	public static InterfazGestorUsuarios getIGUsuarios() {
 		return IGUsuarios;
 	}
-	public void setIGUsuarios(InterfazGestorUsuarios iGUsuarios) {
+
+	public static void setIGUsuarios(InterfazGestorUsuarios iGUsuarios) {
 		IGUsuarios = iGUsuarios;
 	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(dni);

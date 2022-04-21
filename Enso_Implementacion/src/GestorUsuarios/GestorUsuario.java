@@ -1,18 +1,21 @@
 package GestorUsuarios;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import GestorAlarmas.InterfazGestorAlarmas;
+
 public class GestorUsuario implements InterfazGestorUsuarios{
-	private List<InterfazGestorAlarmas> alarmas;
-	private List<InterfazUsuario> usuarios;
+	private static InterfazGestorAlarmas alarmas;
+	private static HashMap<String, InterfazUsuario> usuarios;
 
 	
-	public GestorUsuario(List<InterfazGestorAlarmas> alarmas, List<InterfazUsuario> usuarios) {
+	public GestorUsuario(InterfazGestorAlarmas alarms, HashMap<String, InterfazUsuario> users) {
 		super();
-		this.alarmas = alarmas;
-		this.usuarios = usuarios;
+		alarmas = alarms;
+		usuarios = users;
 	}
 	
 	
@@ -22,7 +25,8 @@ public class GestorUsuario implements InterfazGestorUsuarios{
 			if(this.validarDni(dni) && validarTlf(telefono) && validarMail(email)){
 				if(estado.equals("activa") || estado.equals("activo") || estado.equals("inactiva") || estado.equals("inactivo")) {
 					InterfazUsuario usuario = new Usuario(dni, nombre, telefono, email, centro, zona, capacitacion, estado, this);
-					return this.usuarios.add(usuario);
+					usuarios.put(usuario.getDni(), usuario);
+					return true;
 				}else {
 					return false;
 				}
@@ -36,11 +40,7 @@ public class GestorUsuario implements InterfazGestorUsuarios{
 	
 	public boolean modificarUsuario(String dni, String nombre, String telefono, String email, String centro, String zona, String capacitacion, String estado) {
 		InterfazUsuario usuario = null;
-		for(int i = 0; i < this.usuarios.size(); i++) {
-			if(this.usuarios.get(i).getDni().equals(dni)) {
-				usuario = this.usuarios.get(i);
-			}
-		}
+		usuario = usuarios.get(dni);
 		if (usuario != null) {
 			if(nombre != null) {
 				usuario.setNombre(nombre);
@@ -180,17 +180,29 @@ public class GestorUsuario implements InterfazGestorUsuarios{
 
         return (m.matches());
     }
-	public List<InterfazGestorAlarmas> getAlarmas() {
+
+
+
+	public static InterfazGestorAlarmas getAlarmas() {
 		return alarmas;
 	}
-	public void setAlarmas(List<InterfazGestorAlarmas> alarmas) {
-		this.alarmas = alarmas;
+
+	public static void setAlarmas(InterfazGestorAlarmas alarmas) {
+		GestorUsuario.alarmas = alarmas;
 	}
-	public List<InterfazUsuario> getUsuarios() {
+
+
+
+	public static HashMap<String, InterfazUsuario> getUsuarios() {
 		return usuarios;
 	}
-	public void setUsuarios(List<InterfazUsuario> usuarios) {
-		this.usuarios = usuarios;
-	} 
+
+
+
+	public static void setUsuarios(HashMap<String, InterfazUsuario> usuarios) {
+		GestorUsuario.usuarios = usuarios;
+	}
+
+	
 		
 }
