@@ -14,12 +14,12 @@ public class Equipo implements InterfazEquipo{
 	private ArrayList<Usuario> usuarios;
 	
 	//Constructor
-	public Equipo(Integer idEquipo, String centro, InterfazGestorEquipos iGEquipos) {
+	public Equipo(Integer idEquipo, String centro, InterfazGestorEquipos IGEquipos) {
 		super();
 		this.idEquipo = idEquipo;
 		this.centro = centro;
 		this.activo = 0;
-		this.IGEquipos = iGEquipos;
+		this.IGEquipos = IGEquipos;
 		this.usuarios = new ArrayList<Usuario>();
 	}
 	
