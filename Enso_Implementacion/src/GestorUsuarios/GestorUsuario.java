@@ -12,9 +12,9 @@ public class GestorUsuario implements InterfazGestorUsuarios{
 	private static HashMap<String, InterfazUsuario> usuarios;
 
 	
-	public GestorUsuario(InterfazGestorAlarmas alarms, HashMap<String, InterfazUsuario> users) {
+	public GestorUsuario(InterfazGestorAlarmas alarmas, HashMap<String, InterfazUsuario> users) {
 		super();
-		alarmas = alarms;
+		alarmas = alarmas;
 		usuarios = users;
 	}
 	
