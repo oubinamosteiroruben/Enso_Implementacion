@@ -2,7 +2,7 @@ package GestorAlarmas;
 
 public interface InterfazCentralita {
 	
-	public Boolean activaSirena(Protocolo protocolo);
+	public Boolean activaSirena();
 	
 	public Integer getIdCentralita();
 

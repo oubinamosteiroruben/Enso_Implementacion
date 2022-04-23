@@ -13,7 +13,7 @@ public class Centralita implements InterfazCentralita{
 	}
 
 	@Override
-	public Boolean activaSirena(Protocolo protocolo) {
+	public Boolean activaSirena() {
 		// Se devuelve true por el momento
 		return true;
 	}
@@ -25,6 +25,22 @@ public class Centralita implements InterfazCentralita{
 	public String getCentro() {
 		return centro;
 	}	
+
+	/*
+	Elegir una de las dos
+	*/
+
+	public Boolean anhadirAlarma(Date fechaInicio, String tipo, String centro, String estado){
+		return gestorAlarmas.anhadirAlarma(fechaInicio, tipo, centro, estado);
+	}
+
+	
+	public Boolean anhadirAlarma(String tipo, String centro, String estado){
+		return gestorAlarmas.anhadirAlarma(new Date(System.currentTimeMillis()), tipo, centro, estado);
+	}
+
+
+
 	
 }
 

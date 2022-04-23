@@ -10,14 +10,13 @@ import GestorEstadisticas.InterfazGestorEstadisticas;
 public class GestorAlarmas implements InterfazGestorAlarmas{
 	
 	private static Integer contadorAlarmas = 0;
-	private static Integer contadorProtocolos = 0;
+	//private static Integer contadorProtocolos = 0;
 	private static Integer contadorCentralitas = 0;
 	
 	private HashMap<Integer,InterfazCentralita> centralitas;
 	private HashMap<Integer,InterfazAlarma> alarmas;
 	private InterfazGestorEstadisticas gestorEstadisticas;
 	private InterfazGestorEquipos gestorEquipos;
-	private List<Protocolo> protocolos;
 	
 	
 	public GestorAlarmas() {
@@ -32,6 +31,7 @@ public class GestorAlarmas implements InterfazGestorAlarmas{
 		try {
 			InterfazAlarma ia = (InterfazAlarma) new Alarma(contadorAlarmas++,fechaInicio,tipo,centro,estado);
 			this.alarmas.put(ia.getIdAlarma(),ia);
+			this.gestorEstadisticas.anhadirAlarma(ia);
 		}catch(Exception e) {
 			return false;
 		}
@@ -53,12 +53,10 @@ public class GestorAlarmas implements InterfazGestorAlarmas{
 
 	@Override
 	public Boolean anhadirProtocolo(String tipoAlarma, List<String> acciones) {
-		try {
-			this.protocolos.add(new Protocolo(contadorProtocolos++,tipoAlarma,acciones));
-		}catch(Exception e) {
-			return false;
-		}
-		return true;
+		
+		//return 	this.gestorEquipos.anhadirProtocolo(new Protocolo(contadorProtocolos++,tipoAlarma,acciones));
+		return this.gestorEquipos.anhadirProtocolo(tipoAlarma, acciones); // que el contador esté en el gestor de equipos
+		
 	}
 
 
@@ -71,6 +69,24 @@ public class GestorAlarmas implements InterfazGestorAlarmas{
 			return false;
 		}
 		return true;
+	}
+
+	// Getters 
+
+	public HashMap<Integer,InterfazCentralita> getCentralitas(){
+		return this.centralitas;
+	}
+
+	public HashMap<Integer,InterfazAlarma> getAlarmas(){
+		return this.alarmas;
+	}
+
+	public InterfazGestorEstadisticas getGestorEstadisticas(){
+		return this.gestorEstadisticas;
+	}
+
+	public InterfazGestorEquipos getGestorEquipos(){
+		return this.gestorEquipos;
 	}
 
 }
