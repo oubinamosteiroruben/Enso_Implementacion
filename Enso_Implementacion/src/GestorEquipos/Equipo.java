@@ -9,7 +9,7 @@ public class Equipo implements InterfazEquipo{
 	
 	private Integer idEquipo;
 	private String centro;
-	private InterfazGestorEquipos IGEquipos;
+	private static InterfazGestorEquipos IGEquipos;
 	private HashMap<String,InterfazUsuario> usuarios;
 	
 	//Constructor
@@ -40,11 +40,16 @@ public class Equipo implements InterfazEquipo{
 	@Override
 	public Boolean anhadirUsuario(InterfazUsuario usuario) {
 		try {
-			this.usuarios.put(usuario.getDni(), usuario);
+			if(!this.usuarios.containsKey(usuario.getDni())) {
+				if(usuario.getCentro().equals(this.centro)) {
+					this.usuarios.put(usuario.getDni(), usuario);
+					return true;
+				}
+			}
 		}catch(Exception e) {
 			return false;
 		}
-		return true;
+		return false;
 	}
 	
 	@Override

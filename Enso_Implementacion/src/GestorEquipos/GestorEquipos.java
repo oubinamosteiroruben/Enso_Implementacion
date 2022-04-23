@@ -1,5 +1,6 @@
 package GestorEquipos;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import GestorAlarmas.Protocolo;
@@ -9,18 +10,20 @@ import GestorUsuarios.InterfazUsuario;
 
 public class GestorEquipos implements InterfazGestorEquipos{
 	
-	private static int idsEquipos = 0;
+	private int idsEquipos = 0;
 	
 	private HashMap<Integer,InterfazEquipo> IEquipos;
 	private static InterfazGestorEstadisticas IGEstadisticas;
 	private static InterfazGestorUsuarios IGUsuarios;
+	private ArrayList<Protocolo> protocolos;
 	
 	//Constructor
 	public GestorEquipos(InterfazGestorEstadisticas iGEstadisticas, InterfazGestorUsuarios iGUsuarios) {
 		super();
-		IGEstadisticas = iGEstadisticas;
-		IGUsuarios = iGUsuarios;
-		IEquipos = new HashMap<Integer,InterfazEquipo>();
+		this.IGEstadisticas = iGEstadisticas;
+		this.IGUsuarios = iGUsuarios;
+		this.IEquipos = new HashMap<Integer,InterfazEquipo>();
+		this.protocolos = new ArrayList<Protocolo>();
 	}
 	
 	//Metodos de la interfaz
@@ -54,7 +57,12 @@ public class GestorEquipos implements InterfazGestorEquipos{
 	//implementar
 	@Override
 	public Boolean enviarProtocolo(Protocolo protocolo) {
-		return null;
+		try {
+			this.protocolos.add(protocolo);
+		}catch(Exception e) {
+			return false;
+		}
+		return true;
 	}
 	
 	@Override

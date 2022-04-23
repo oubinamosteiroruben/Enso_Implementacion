@@ -21,4 +21,6 @@ public interface InterfazUsuario {
 	public void setEstado(String estado);
 	
 	public String getEstado();
+	
+	public String getCentro();
 }
