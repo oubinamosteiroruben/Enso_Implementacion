@@ -1,6 +1,6 @@
 package GestorEquipos;
 
-import GestorUsuarios.Usuario;
+import GestorUsuarios.InterfazUsuario;
 import GestorAlarmas.Protocolo;
 
 public interface InterfazGestorEquipos{
@@ -15,10 +15,8 @@ public interface InterfazGestorEquipos{
 	
 	public Boolean modificarEstadoAlarma(Integer idAlarma, String estado);
 	
-	public Boolean anhadirUsuarioEquipo(Usuario usuario, Integer idEquipo);
+	public Boolean anhadirUsuarioEquipo(InterfazUsuario usuario, Integer idEquipo);
 	
 	public Boolean activarEquipo(Integer idEquipo);
-	
-	public Boolean desactivarEquipo(Integer idEquipo);
 	
 }

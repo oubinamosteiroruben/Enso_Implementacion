@@ -1,26 +1,24 @@
 package GestorEquipos;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
-import GestorUsuarios.Usuario;
+import GestorUsuarios.InterfazUsuario;
 
 public class Equipo implements InterfazEquipo{
 	
 	private Integer idEquipo;
 	private String centro;
-	private Integer activo;
 	private InterfazGestorEquipos IGEquipos;
-	private ArrayList<Usuario> usuarios;
+	private HashMap<String,InterfazUsuario> usuarios;
 	
 	//Constructor
 	public Equipo(Integer idEquipo, String centro, InterfazGestorEquipos IGEquipos) {
 		super();
 		this.idEquipo = idEquipo;
 		this.centro = centro;
-		this.activo = 0;
 		this.IGEquipos = IGEquipos;
-		this.usuarios = new ArrayList<Usuario>();
+		this.usuarios = new HashMap<String,InterfazUsuario>();
 	}
 	
 	//Metodos de la interfaz
@@ -40,9 +38,9 @@ public class Equipo implements InterfazEquipo{
 	}
 	
 	@Override
-	public Boolean anhadirUsuario(Usuario usuario) {
+	public Boolean anhadirUsuario(InterfazUsuario usuario) {
 		try {
-			this.usuarios.add(usuario);
+			this.usuarios.put(usuario.getDni(), usuario);
 		}catch(Exception e) {
 			return false;
 		}
@@ -52,21 +50,15 @@ public class Equipo implements InterfazEquipo{
 	@Override
 	public Boolean activar() {
 		try {
-			this.activo = 1;
+			for(InterfazUsuario u : this.usuarios.values()) {
+				if(u.getEstado().equals("activa") || u.getEstado().equals("activo")) {
+					return true;
+				}
+			}
 		}catch(Exception e) {
 			return false;
 		}
-		return true;
-	}
-	
-	@Override
-	public Boolean desactivar() {
-		try {
-			this.activo = 0;
-		}catch(Exception e) {
-			return false;
-		}
-		return true;
+		return false;
 	}
 	
 	//Getters y Setters
@@ -78,11 +70,7 @@ public class Equipo implements InterfazEquipo{
 		return centro;
 	}
 	
-	public Integer getActivo() {
-		return activo;
-	}
-	
-	public ArrayList<Usuario> getUsuarios() {
+	public HashMap<String,InterfazUsuario> getUsuarios() {
 		return usuarios;
 	}
 	

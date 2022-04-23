@@ -5,7 +5,7 @@ import java.util.HashMap;
 import GestorAlarmas.Protocolo;
 import GestorEstadisticas.InterfazGestorEstadisticas;
 import GestorUsuarios.InterfazGestorUsuarios;
-import GestorUsuarios.Usuario;
+import GestorUsuarios.InterfazUsuario;
 
 public class GestorEquipos implements InterfazGestorEquipos{
 	
@@ -63,7 +63,7 @@ public class GestorEquipos implements InterfazGestorEquipos{
 	}
 	
 	@Override
-	public Boolean anhadirUsuarioEquipo(Usuario usuario, Integer idEquipo) {
+	public Boolean anhadirUsuarioEquipo(InterfazUsuario usuario, Integer idEquipo) {
 		try {
 			this.IEquipos.get(idEquipo).anhadirUsuario(usuario);
 		}catch(Exception e) {
@@ -81,17 +81,7 @@ public class GestorEquipos implements InterfazGestorEquipos{
 		}
 		return true;
 	}
-
-	@Override
-	public Boolean desactivarEquipo(Integer idEquipo) {
-		try {
-			this.IEquipos.get(idEquipo).desactivar();
-		}catch(Exception e) {
-			return false;
-		}
-		return true;
-	}
-
+	
 	//Getters
 	public HashMap<Integer,InterfazEquipo> getIEquipos() {
 		return IEquipos;

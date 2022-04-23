@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import GestorAlarmas.Alarma;
+
 public class GestorEstadisticas implements InterfazGestorEstadisticas{
 	
 	private ArrayList<Estadistica> estadisticas;

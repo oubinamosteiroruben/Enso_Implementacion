@@ -19,4 +19,6 @@ public interface InterfazUsuario {
 	public void setCapacitacion(String capacitacion);
 	
 	public void setEstado(String estado);
+	
+	public String getEstado();
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import GestorAlarmas.Alarma;
+
 public interface InterfazGestorEstadisticas {
 	
 	// devuelve true si se anhade correctamente, false en otro caso

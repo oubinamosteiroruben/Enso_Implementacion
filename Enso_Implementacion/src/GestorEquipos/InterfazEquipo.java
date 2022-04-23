@@ -1,6 +1,6 @@
 package GestorEquipos;
 
-import GestorUsuarios.Usuario;
+import GestorUsuarios.InterfazUsuario;
 
 public interface InterfazEquipo{
 	
@@ -8,10 +8,8 @@ public interface InterfazEquipo{
 	
 	Boolean modificarCentro(String centro);
 	
-	Boolean anhadirUsuario(Usuario usuario);
+	Boolean anhadirUsuario(InterfazUsuario usuario);
 	
 	Boolean activar();
-	
-	Boolean desactivar();
 	
 }
