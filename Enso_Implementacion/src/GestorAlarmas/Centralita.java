@@ -1,15 +1,17 @@
 package GestorAlarmas;
 
+import java.util.Date;
+
 public class Centralita implements InterfazCentralita{
 	
 	private final Integer idCentralita;
 	private final String centro;
-	private final InterfazGestorAlarmas gestorAlarmas;
+	private static InterfazGestorAlarmas IGAlarmas;
 
-	public Centralita(Integer idCentralita, String centro, InterfazGestorAlarmas gestorAlarmas) {
+	public Centralita(Integer idCentralita, String centro, InterfazGestorAlarmas IGAlarmas) {
 		this.idCentralita = idCentralita;
 		this.centro = centro;
-		this.gestorAlarmas = gestorAlarmas;
+		this.IGAlarmas = IGAlarmas;
 	}
 
 	@Override
@@ -30,13 +32,13 @@ public class Centralita implements InterfazCentralita{
 	Elegir una de las dos
 	*/
 
-	public Boolean anhadirAlarma(Date fechaInicio, String tipo, String centro, String estado){
-		return gestorAlarmas.anhadirAlarma(fechaInicio, tipo, centro, estado);
-	}
+	/*public Boolean anhadirAlarma(Date fechaInicio, String tipo, String centro, String estado){
+		return IGAlarmas.anhadirAlarma(fechaInicio, tipo, centro, estado);
+	}*/
 
 	
 	public Boolean anhadirAlarma(String tipo, String centro, String estado){
-		return gestorAlarmas.anhadirAlarma(new Date(System.currentTimeMillis()), tipo, centro, estado);
+		return IGAlarmas.anhadirAlarma(tipo, centro, estado);
 	}
 
 

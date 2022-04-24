@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface InterfazGestorAlarmas {
 	
-	public Boolean anhadirAlarma(Date fechaInicio, String tipo, String centro, String estado);
+	public Boolean anhadirAlarma(String tipo, String centro, String estado);
 	
 	public Boolean cerrarAlarma(Integer idAlarma);
 	
