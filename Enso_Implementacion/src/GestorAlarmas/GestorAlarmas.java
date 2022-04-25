@@ -19,8 +19,7 @@ public class GestorAlarmas implements InterfazGestorAlarmas {
 	private InterfazGestorEstadisticas gestorEstadisticas;
 	private InterfazGestorEquipos gestorEquipos;
 
-	public static final String ACTIVA = "ACTIVA";
-	public static final String APAGADA = "APAGADA";
+	
 
 	public GestorAlarmas() {
 		this.centralitas = new HashMap<>();

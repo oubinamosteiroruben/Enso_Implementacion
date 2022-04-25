@@ -5,6 +5,9 @@ import java.util.List;
 
 public interface InterfazGestorAlarmas {
 	
+	public static final String ACTIVA = "ACTIVA";
+	public static final String APAGADA = "APAGADA";
+
 	public Boolean anhadirAlarma(String tipo, String centro, String estado);
 	
 	public Boolean cerrarAlarma(Integer idAlarma);
