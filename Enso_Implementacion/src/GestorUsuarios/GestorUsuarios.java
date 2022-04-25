@@ -5,19 +5,28 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import GestorAlarmas.GestorAlarmas;
 import GestorAlarmas.InterfazGestorAlarmas;
 
-public class GestorUsuario implements InterfazGestorUsuarios{
-	private static InterfazGestorAlarmas alarmas;
-	private static HashMap<String, InterfazUsuario> usuarios;
+public class GestorUsuarios implements InterfazGestorUsuarios{
+	private InterfazGestorAlarmas gestorAlarmas;
+	private HashMap<String, InterfazUsuario> usuarios;
+	
+	private static InterfazGestorUsuarios gestorUsuarios;
 
 	
-	public GestorUsuario(InterfazGestorAlarmas alarmas, HashMap<String, InterfazUsuario> users) {
+	public GestorUsuarios() {
 		super();
-		alarmas = alarmas;
-		usuarios = users;
+		gestorAlarmas = InterfazGestorAlarmas.getInstance();
+		usuarios = new HashMap<>();
 	}
 	
+	public static InterfazGestorUsuarios getInstance() {
+		if(gestorUsuarios == null) {
+			gestorUsuarios = (InterfazGestorUsuarios) new GestorUsuarios();
+		}
+		return gestorUsuarios;
+	}
 	
 	
 	public boolean anhadirUsuario(String dni, String nombre, String telefono, String email, String centro, String zona, String capacitacion, String estado) {
@@ -188,7 +197,7 @@ public class GestorUsuario implements InterfazGestorUsuarios{
 	}
 
 	public static void setAlarmas(InterfazGestorAlarmas alarmas) {
-		GestorUsuario.alarmas = alarmas;
+		GestorUsuarios.alarmas = alarmas;
 	}
 
 
@@ -200,7 +209,7 @@ public class GestorUsuario implements InterfazGestorUsuarios{
 
 
 	public static void setUsuarios(HashMap<String, InterfazUsuario> usuarios) {
-		GestorUsuario.usuarios = usuarios;
+		GestorUsuarios.usuarios = usuarios;
 	}
 
 	

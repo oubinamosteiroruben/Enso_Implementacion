@@ -21,8 +21,9 @@ public interface InterfazGestorUsuarios {
 	
 	public boolean enviarMensajeAccion(String dni, String accion);
 	
-	
-	
+	public static InterfazGestorUsuarios getInstance() {
+		return GestorUsuarios.getInstance();
+	}
 	
 	
 	
