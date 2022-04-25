@@ -19,4 +19,8 @@ public interface InterfazGestorEquipos{
 	
 	public Boolean activarEquipo(Integer idEquipo);
 	
+	public static InterfazGestorEquipos getInstance() {
+		return GestorEquipos.getInstance();
+	}
+	
 }

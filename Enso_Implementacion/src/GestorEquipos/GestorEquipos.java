@@ -13,17 +13,26 @@ public class GestorEquipos implements InterfazGestorEquipos{
 	private int idsEquipos = 0;
 	
 	private HashMap<Integer,InterfazEquipo> IEquipos;
-	private static InterfazGestorEstadisticas IGEstadisticas;
-	private static InterfazGestorUsuarios IGUsuarios;
+	private InterfazGestorEstadisticas IGEstadisticas;
+	private InterfazGestorUsuarios IGUsuarios;
 	private ArrayList<Protocolo> protocolos;
 	
+	private static InterfazGestorEquipos gestorEquipos;
+	
 	//Constructor
-	public GestorEquipos(InterfazGestorEstadisticas iGEstadisticas, InterfazGestorUsuarios iGUsuarios) {
+	public GestorEquipos() {
 		super();
-		this.IGEstadisticas = iGEstadisticas;
-		this.IGUsuarios = iGUsuarios;
+		this.IGEstadisticas = InterfazGestorEstadisticas.getInstance();
+		this.IGUsuarios = InterfazGestorUsuarios.getInstance();
 		this.IEquipos = new HashMap<Integer,InterfazEquipo>();
 		this.protocolos = new ArrayList<Protocolo>();
+	}
+	
+	public static InterfazGestorEquipos getInstance() {
+		if(gestorEquipos == null) {
+			gestorEquipos = (InterfazGestorEquipos) new GestorEquipos();
+		}
+		return gestorEquipos;
 	}
 	
 	//Metodos de la interfaz
