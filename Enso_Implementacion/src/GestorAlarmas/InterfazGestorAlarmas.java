@@ -17,5 +17,9 @@ public interface InterfazGestorAlarmas {
 	public Boolean anhadirProtocolo(String tipoAlarma, List<String> acciones);
 
 	public Boolean anhadirCentralita(String centro);
+	
+	public static InterfazGestorAlarmas getInstance() {
+		return GestorAlarmas.getInstance();
+	}
 
 }

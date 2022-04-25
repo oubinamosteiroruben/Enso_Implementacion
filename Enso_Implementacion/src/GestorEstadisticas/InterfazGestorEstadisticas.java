@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import GestorAlarmas.Alarma;
+import GestorAlarmas.GestorAlarmas;
+import GestorAlarmas.InterfazGestorAlarmas;
 
 public interface InterfazGestorEstadisticas {
 	
@@ -29,4 +31,8 @@ public interface InterfazGestorEstadisticas {
 	// devuelve el centro con menos alarmas resueltas, o "" si no hay alarmas
 	public String getCentroMenosAlarmas();
 
+	// devuelve la instancia de la interfaz de gestorEstadisticas
+	public static InterfazGestorEstadisticas getInstance() {
+		return GestorEstadisticas.getInstance();
+	}
 }

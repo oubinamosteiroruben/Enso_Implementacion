@@ -18,12 +18,21 @@ public class GestorAlarmas implements InterfazGestorAlarmas {
 	private HashMap<Integer, InterfazAlarma> alarmas;
 	private InterfazGestorEstadisticas gestorEstadisticas;
 	private InterfazGestorEquipos gestorEquipos;
-
+	private static InterfazGestorAlarmas gestorAlarmas;
 	
 
 	public GestorAlarmas() {
 		this.centralitas = new HashMap<>();
 		this.alarmas = new HashMap<>();
+		
+		this.gestorEstadisticas = GestorEstadisticas.getInstance();
+	}
+	
+	public static InterfazGestorAlarmas getInstance() {
+		if(gestorAlarmas == null) {
+			gestorAlarmas = (InterfazGestorAlarmas) new GestorAlarmas();
+		}
+		return gestorAlarmas;
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package GestorEstadisticas;
 
+import GestorAlarmas.GestorAlarmas;
 import GestorAlarmas.InterfazAlarma;
+import GestorAlarmas.InterfazGestorAlarmas;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,11 +13,19 @@ public class GestorEstadisticas implements InterfazGestorEstadisticas{
 	private ArrayList<Estadistica> estadisticas;
 	private ArrayList<InterfazAlarma> alarmasResueltas;
 
+	private static InterfazGestorEstadisticas gestorEstadisticas;
 	
 	// Constructor
 	public GestorEstadisticas() {
 		this.estadisticas = new ArrayList<>();
 		this.alarmasResueltas = new ArrayList<>();
+	}
+	
+	public static InterfazGestorEstadisticas getInstance() {
+		if(gestorEstadisticas == null) {
+			gestorEstadisticas = (InterfazGestorEstadisticas) new GestorEstadisticas();
+		}
+		return gestorEstadisticas;
 	}
 
 	
