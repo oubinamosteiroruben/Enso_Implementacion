@@ -37,16 +37,16 @@ public class GestorAlarmas implements InterfazGestorAlarmas {
 
 		try {
 			Date fechaInicio = new Date(System.currentTimeMillis());
-			/* Comprobaci�n de los par�metros */
+			/* Comprobacion de los parametros */
 
-			if (tipo.equals("") || centro.equals("")
-					|| estado.equals("")) { /* en tipo, estado se podr�an poner constantes */
+			if (tipo == null || tipo.equals("") || centro == null ||  centro.equals("")
+					|| estado == null || estado.equals("")) { 
 				return false;
 			}
 
 			InterfazAlarma ia = (InterfazAlarma) new Alarma(contadorAlarmas++, fechaInicio, tipo, centro, estado);
 			alarmas.put(ia.getIdAlarma(), ia);
-			gestorEstadisticas.anhadirAlarma(ia); // Hablar con david
+			gestorEstadisticas.anhadirAlarma(ia); 
 		} catch (Exception e) {
 			return false;
 		}
@@ -83,7 +83,7 @@ public class GestorAlarmas implements InterfazGestorAlarmas {
 				return false;
 			}
 
-			for (String a : acciones) { // Las acciones no pueden ser vac�as
+			for (String a : acciones) { // Las acciones no pueden ser vacias
 				if (a.equals("")) {
 					return false;
 				}
