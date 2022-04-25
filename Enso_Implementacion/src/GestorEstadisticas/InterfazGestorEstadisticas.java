@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import GestorAlarmas.Alarma;
+import GestorAlarmas.InterfazAlarma;
 
 public interface InterfazGestorEstadisticas {
 	
@@ -15,7 +15,7 @@ public interface InterfazGestorEstadisticas {
 	public Boolean anhadirAccion(String accion);
 	
 	// devuelve true si se anhade correctamente, false en otro caso
-	public Boolean anhadirAlarma(Alarma alarma);
+	public Boolean anhadirAlarma(InterfazAlarma alarma);
 	
 	// devuelve la lista de alarmas resueltas
 	public ArrayList<Alarma> getAlarmasResueltas();
