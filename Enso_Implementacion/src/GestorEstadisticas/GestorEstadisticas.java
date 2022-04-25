@@ -52,13 +52,16 @@ public class GestorEstadisticas implements InterfazGestorEstadisticas{
 	// Metodos
 	public Boolean anhadirVerificacionDesalojo(String centro, String zona, String dniUsuario) {
 		if(centro != null && zona != null && dniUsuario != null) {
-			ArrayList<String> results = new ArrayList<>();
-			results.add("Centro:" + centro);
-			results.add("Zona:" + zona);
-			results.add("Usuario:" + dniUsuario);
-			
-			this.estadisticas.add(new Estadistica(TIPO_ESTADISTICA.VERIFICACION, results));
-			return true;
+			if(!centro.equals("") && !zona.equals("") && !dniUsuario.equals("")) {
+				ArrayList<String> results = new ArrayList<>();
+				results.add("Centro:" + centro);
+				results.add("Zona:" + zona);
+				results.add("Usuario:" + dniUsuario);
+				
+				this.estadisticas.add(new Estadistica(TIPO_ESTADISTICA.VERIFICACION, results));
+				return true;
+			}
+			return false;
 		}
 		return false;
 	}
