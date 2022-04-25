@@ -33,7 +33,7 @@ public class GestorUsuarios implements InterfazGestorUsuarios{
 		if(dni != null && nombre != null && telefono != null && email != null && centro != null && zona != null && capacitacion != null && estado != null) {
 			if(this.validarDni(dni) && validarTlf(telefono) && validarMail(email)){
 				if(estado.equals("activa") || estado.equals("activo") || estado.equals("inactiva") || estado.equals("inactivo")) {
-					InterfazUsuario usuario = new Usuario(dni, nombre, telefono, email, centro, zona, capacitacion, estado, this);
+					InterfazUsuario usuario = new Usuario(dni, nombre, telefono, email, centro, zona, capacitacion, estado);
 					usuarios.put(usuario.getDni(), usuario);
 					return true;
 				}else {
@@ -192,24 +192,24 @@ public class GestorUsuarios implements InterfazGestorUsuarios{
 
 
 
-	public static InterfazGestorAlarmas getAlarmas() {
-		return alarmas;
+	public InterfazGestorAlarmas getAlarmas() {
+		return gestorAlarmas;
 	}
 
-	public static void setAlarmas(InterfazGestorAlarmas alarmas) {
-		GestorUsuarios.alarmas = alarmas;
+	public void setAlarmas(InterfazGestorAlarmas alarmas) {
+		this.gestorAlarmas = alarmas;
 	}
 
 
 
-	public static HashMap<String, InterfazUsuario> getUsuarios() {
+	public HashMap<String, InterfazUsuario> getUsuarios() {
 		return usuarios;
 	}
 
 
 
-	public static void setUsuarios(HashMap<String, InterfazUsuario> usuarios) {
-		GestorUsuarios.usuarios = usuarios;
+	public void setUsuarios(HashMap<String, InterfazUsuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 	

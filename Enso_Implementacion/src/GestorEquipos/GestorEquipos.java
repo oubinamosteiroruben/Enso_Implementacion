@@ -40,7 +40,7 @@ public class GestorEquipos implements InterfazGestorEquipos{
 	public Boolean anhadirEquipo(String centro) {
 		try {
 			int id = idsEquipos++;
-			InterfazEquipo nuevoEquipo = (InterfazEquipo) new Equipo(id,centro,this);
+			InterfazEquipo nuevoEquipo = (InterfazEquipo) new Equipo(id,centro);
 			this.IEquipos.put(id, nuevoEquipo);
 		}catch(Exception e) {
 			return false;

@@ -9,15 +9,15 @@ public class Equipo implements InterfazEquipo{
 	
 	private Integer idEquipo;
 	private String centro;
-	private static InterfazGestorEquipos IGEquipos;
+	private InterfazGestorEquipos IGEquipos;
 	private HashMap<String,InterfazUsuario> usuarios;
 	
 	//Constructor
-	public Equipo(Integer idEquipo, String centro, InterfazGestorEquipos IGEquipos) {
+	public Equipo(Integer idEquipo, String centro) {
 		super();
 		this.idEquipo = idEquipo;
 		this.centro = centro;
-		this.IGEquipos = IGEquipos;
+		this.IGEquipos = InterfazGestorEquipos.getInstance();
 		this.usuarios = new HashMap<String,InterfazUsuario>();
 	}
 	

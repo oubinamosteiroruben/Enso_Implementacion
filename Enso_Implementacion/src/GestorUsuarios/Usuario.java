@@ -11,11 +11,11 @@ public class Usuario implements InterfazUsuario{
 	private String zona;
 	private String capacitacion;
 	private String estado;
-	private static InterfazGestorUsuarios IGUsuarios;
+	private InterfazGestorUsuarios IGUsuarios;
 	
 		
 	public Usuario(String dni, String nombre, String telefono, String email, String centro, String zona,
-			String capacitacion, String estado, InterfazGestorUsuarios iGUsuarios) {
+			String capacitacion, String estado) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -25,7 +25,7 @@ public class Usuario implements InterfazUsuario{
 		this.zona = zona;
 		this.capacitacion = capacitacion;
 		this.estado = estado;
-		IGUsuarios = iGUsuarios;
+		this.IGUsuarios = InterfazGestorUsuarios.getInstance();
 	}
 	
 	public boolean enviarMensajeAccion(String mensaje) {
@@ -82,11 +82,11 @@ public class Usuario implements InterfazUsuario{
 		this.estado = estado;
 	}
 
-	public static InterfazGestorUsuarios getIGUsuarios() {
+	public InterfazGestorUsuarios getIGUsuarios() {
 		return IGUsuarios;
 	}
 
-	public static void setIGUsuarios(InterfazGestorUsuarios iGUsuarios) {
+	public void setIGUsuarios(InterfazGestorUsuarios iGUsuarios) {
 		IGUsuarios = iGUsuarios;
 	}
 

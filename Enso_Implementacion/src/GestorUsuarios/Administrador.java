@@ -4,27 +4,27 @@ import GestorAlarmas.InterfazGestorAlarmas;
 import GestorEstadisticas.InterfazGestorEstadisticas;
 
 public class Administrador {
-	private static InterfazGestorEstadisticas IGEstadisticas;
-	private static InterfazGestorAlarmas IGAlarmas;
+	private InterfazGestorEstadisticas IGEstadisticas;
+	private InterfazGestorAlarmas IGAlarmas;
 	
-	public Administrador(InterfazGestorAlarmas alarmas, InterfazGestorEstadisticas estadisticas) {
-		IGAlarmas = alarmas;
-		IGEstadisticas = estadisticas;
+	public Administrador() {
+		IGAlarmas = InterfazGestorAlarmas.getInstance();
+		IGEstadisticas = InterfazGestorEstadisticas.getInstance();
 	}
 
-	public static InterfazGestorEstadisticas getIGEstadisticas() {
+	public InterfazGestorEstadisticas getIGEstadisticas() {
 		return IGEstadisticas;
 	}
 
-	public static void setIGEstadisticas(InterfazGestorEstadisticas iGEstadisticas) {
+	public void setIGEstadisticas(InterfazGestorEstadisticas iGEstadisticas) {
 		IGEstadisticas = iGEstadisticas;
 	}
 
-	public static InterfazGestorAlarmas getIGAlarmas() {
+	public InterfazGestorAlarmas getIGAlarmas() {
 		return IGAlarmas;
 	}
 
-	public static void setIGAlarmas(InterfazGestorAlarmas iGAlarmas) {
+	public void setIGAlarmas(InterfazGestorAlarmas iGAlarmas) {
 		IGAlarmas = iGAlarmas;
 	}
 
