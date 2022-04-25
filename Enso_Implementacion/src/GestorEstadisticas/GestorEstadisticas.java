@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import GestorAlarmas.Alarma;
-
 public class GestorEstadisticas implements InterfazGestorEstadisticas{
 	
 	private ArrayList<Estadistica> estadisticas;
-	private ArrayList<Alarma> alarmasResueltas;
+	private ArrayList<InterfazAlarma> alarmasResueltas;
 
 	
 	// Constructor
@@ -30,11 +28,11 @@ public class GestorEstadisticas implements InterfazGestorEstadisticas{
 		}
 	}
 	
-	public ArrayList<Alarma> getAlarmasResueltas() {
+	public ArrayList<InterfazAlarma> getAlarmasResueltas() {
 		return alarmasResueltas;
 	}
 
-	public void setAlarmas(ArrayList<Alarma> alarmasResueltas) {
+	public void setAlarmas(ArrayList<InterfazAlarma> alarmasResueltas) {
 		if(alarmasResueltas != null) {
 			this.alarmasResueltas = alarmasResueltas;
 		}
@@ -66,7 +64,7 @@ public class GestorEstadisticas implements InterfazGestorEstadisticas{
 		return false;
 	}
 	
-	public Boolean anhadirAlarma(Alarma alarma) {
+	public Boolean anhadirAlarma(InterfazAlarma alarma) {
 		if(alarma != null) {
 			this.alarmasResueltas.add(alarma);
 			return true;
@@ -78,7 +76,7 @@ public class GestorEstadisticas implements InterfazGestorEstadisticas{
 	public float getDuracionMediaAlarmas() {
 		long resultado = 0;
 		int contador = 0;
-		for(Alarma alarma: this.alarmasResueltas) {
+		for(InterfazAlarma alarma: this.alarmasResueltas) {
 			if(alarma.getFechaInicio() != null && alarma.getFechaCierre() != null) {
 				resultado += alarma.getFechaCierre().getTime() - alarma.getFechaInicio().getTime();
 				contador++;
@@ -89,7 +87,7 @@ public class GestorEstadisticas implements InterfazGestorEstadisticas{
 	
 	public String getCentroMasAlarmas() {
 		Map<String, Integer> repeticiones = new HashMap<>();
-		for (Alarma alarma: this.alarmasResueltas) {
+		for (InterfazAlarma alarma: this.alarmasResueltas) {
 			String centro = alarma.getCentro();
 			if(repeticiones.containsKey(centro)) {
 				repeticiones.put(centro, repeticiones.get(centro)+1);
@@ -111,7 +109,7 @@ public class GestorEstadisticas implements InterfazGestorEstadisticas{
 	
 	public String getCentroMenosAlarmas() {
 		Map<String, Integer> repeticiones = new HashMap<>();
-		for (Alarma alarma: this.alarmasResueltas) {
+		for (InterfazAlarma alarma: this.alarmasResueltas) {
 			String centro = alarma.getCentro();
 			if(repeticiones.containsKey(centro)) {
 				repeticiones.put(centro, repeticiones.get(centro)+1);
