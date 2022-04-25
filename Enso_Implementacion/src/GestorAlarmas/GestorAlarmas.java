@@ -1,6 +1,5 @@
 package GestorAlarmas;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -38,14 +37,14 @@ public class GestorAlarmas implements InterfazGestorAlarmas {
 
 		try {
 			Date fechaInicio = new Date(System.currentTimeMillis());
-			/* Comprobación de los parámetros */
+			/* Comprobaciï¿½n de los parï¿½metros */
 
 			if (tipo.equals("") || centro.equals("")
-					|| estado.equals("")) { /* en tipo, estado se podrían poner constantes */
+					|| estado.equals("")) { /* en tipo, estado se podrï¿½an poner constantes */
 				return false;
 			}
 
-			InterfazAlarma ia = (InterfazAlarma) new Alarma(contadorAlarmas++, fechaInicio, tipo, centro, estado, this);
+			InterfazAlarma ia = (InterfazAlarma) new Alarma(contadorAlarmas++, fechaInicio, tipo, centro, estado);
 			alarmas.put(ia.getIdAlarma(), ia);
 			gestorEstadisticas.anhadirAlarma(ia); // Hablar con david
 		} catch (Exception e) {
@@ -84,7 +83,7 @@ public class GestorAlarmas implements InterfazGestorAlarmas {
 				return false;
 			}
 
-			for (String a : acciones) { // Las acciones no pueden ser vacías
+			for (String a : acciones) { // Las acciones no pueden ser vacï¿½as
 				if (a.equals("")) {
 					return false;
 				}
@@ -109,7 +108,7 @@ public class GestorAlarmas implements InterfazGestorAlarmas {
 				return false;
 			}
 
-			InterfazCentralita ic = (InterfazCentralita) new Centralita(contadorCentralitas++, centro, this);
+			InterfazCentralita ic = (InterfazCentralita) new Centralita(contadorCentralitas++, centro);
 			this.centralitas.put(ic.getIdCentralita(), ic);
 		} catch (Exception e) {
 			return false;

@@ -1,8 +1,6 @@
 package GestorEstadisticas;
 
-import GestorAlarmas.GestorAlarmas;
 import GestorAlarmas.InterfazAlarma;
-import GestorAlarmas.InterfazGestorAlarmas;
 
 import java.util.ArrayList;
 import java.util.HashMap;

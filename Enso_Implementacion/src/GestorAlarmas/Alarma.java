@@ -10,26 +10,23 @@ public class Alarma implements InterfazAlarma{
 	private final String centro;
 	private String estado;
 	private Date fechaCierre;
-	private static InterfazGestorAlarmas IGAlarmas;
 
-	public Alarma(Integer idAlarma, Date fechaInicio, String tipo, String centro, String estado, InterfazGestorAlarmas IGAlarmas){
+	public Alarma(Integer idAlarma, Date fechaInicio, String tipo, String centro, String estado){
 		this.idAlarma = idAlarma;
 		this.fechaInicio = fechaInicio;
 		this.tipo = tipo;
 		this.centro = centro;
 		this.estado = estado;
 		this.fechaCierre = null;
-		this.IGAlarmas = IGAlarmas;
 	}
 	
-	public Alarma(Integer idAlarma, Date fechaInicio, String tipo, String centro, InterfazGestorAlarmas IGAlarmas){
+	public Alarma(Integer idAlarma, Date fechaInicio, String tipo, String centro){
 		this.idAlarma = idAlarma;
 		this.fechaInicio = fechaInicio;
 		this.tipo = tipo;
 		this.centro = centro;
-		this.estado = IGAlarmas.ACTIVA;
+		this.estado = InterfazGestorAlarmas.ACTIVA;
 		this.fechaCierre = null;
-		this.IGAlarmas = IGAlarmas;
 	}
 	
 
@@ -76,11 +73,10 @@ public class Alarma implements InterfazAlarma{
 		return true;
 	}
 
-	@Override
 	public Boolean cerrarAlarma() {
 		try {
 			this.setFechaCierre(new Date(System.currentTimeMillis()));
-			IGAlarmas.APAGADA;
+			this.estado = InterfazGestorAlarmas.APAGADA;
 		}catch(Exception e) {
 			return false;
 		}

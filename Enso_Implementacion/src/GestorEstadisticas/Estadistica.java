@@ -3,10 +3,6 @@ package GestorEstadisticas;
 import java.util.ArrayList;
 import java.util.Date;
 
-public enum TIPO_ESTADISTICA{
-	VERIFICACION, ACCION
-}
-
 public class Estadistica {
 
 	private static int contador = 0; 
