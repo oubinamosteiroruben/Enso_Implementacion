@@ -51,7 +51,12 @@ public class GestorEquipos implements InterfazGestorEquipos{
 	@Override
 	public Boolean modificarEquipo(Integer idEquipo, String centro) {
 		try {
-			this.IEquipos.get(idEquipo).modificarCentro(centro);
+			if(this.IEquipos.containsKey(idEquipo)) {
+				this.IEquipos.get(idEquipo).modificarCentro(centro);
+			}
+			else {
+				return false;
+			}
 		}catch(Exception e) {
 			return false;
 		}
@@ -67,7 +72,12 @@ public class GestorEquipos implements InterfazGestorEquipos{
 	@Override
 	public Boolean enviarProtocolo(Protocolo protocolo) {
 		try {
-			this.protocolos.add(protocolo);
+			if(!this.protocolos.contains(protocolo)) {
+				this.protocolos.add(protocolo);
+			}
+			else {
+				return false;
+			}
 		}catch(Exception e) {
 			return false;
 		}
@@ -82,7 +92,22 @@ public class GestorEquipos implements InterfazGestorEquipos{
 	@Override
 	public Boolean anhadirUsuarioEquipo(InterfazUsuario usuario, Integer idEquipo) {
 		try {
-			this.IEquipos.get(idEquipo).anhadirUsuario(usuario);
+			Boolean existe=false;
+			if(usuario!=null) {
+				if(this.IEquipos.containsKey(idEquipo)) {
+					for(InterfazEquipo e : this.IEquipos.values()) {
+						if(e.contieneUsuario(usuario)) {
+							existe = true;;
+						}
+					}
+					if(!existe) {
+						this.IEquipos.get(idEquipo).anhadirUsuario(usuario);
+					}
+				}
+				else {
+					return false;
+				}
+			}
 		}catch(Exception e) {
 			return false;
 		}
@@ -92,7 +117,12 @@ public class GestorEquipos implements InterfazGestorEquipos{
 	@Override
 	public Boolean activarEquipo(Integer idEquipo) {
 		try {
-			this.IEquipos.get(idEquipo).activar();
+			if(this.IEquipos.containsKey(idEquipo)) {
+				this.IEquipos.get(idEquipo).activar();
+			}
+			else {
+				return false;
+			}
 		}catch(Exception e) {
 			return false;
 		}

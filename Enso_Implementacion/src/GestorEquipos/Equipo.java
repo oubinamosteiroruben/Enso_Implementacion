@@ -44,7 +44,7 @@ public class Equipo implements InterfazEquipo{
 				if(usuario.getCentro().equals(this.centro)) {
 					this.usuarios.put(usuario.getDni(), usuario);
 					return true;
-				}
+				}	
 			}
 		}catch(Exception e) {
 			return false;
@@ -64,6 +64,11 @@ public class Equipo implements InterfazEquipo{
 			return false;
 		}
 		return false;
+	}
+
+	@Override
+	public Boolean contieneUsuario(InterfazUsuario usuario) {
+		return this.usuarios.containsKey(usuario.getDni());
 	}
 	
 	//Getters y Setters
